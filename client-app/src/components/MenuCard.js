@@ -28,7 +28,7 @@ function MenuCard(props) {
         <div className='menu-container' id='menu'>
             <div className='menu-categories'>
                 {categories.map(category => (
-                <div>{category}</div>
+                <div className='category'>{category}</div>
                 ))}
             </div>
             <div className='menu-content'>

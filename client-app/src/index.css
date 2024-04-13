@@ -5,7 +5,6 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: black;
   font-family:  "Roboto", sans-serif;
   overflow-y: scroll;
   font-weight: 300;
@@ -129,11 +128,11 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: black;
   color: white;
   background-image: url("back.jpg");
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .header{
@@ -152,20 +151,19 @@ body{
 .menu-container{
   min-height: 90vh;
   display: flex;
-  background-color: white;
   width: 100%;
   justify-content: space-between;
   height: fit-content;
-}
-
-.menu-categories{
-  padding: 20px;
-  flex: 0 0 20%;
+  background-image: url("back.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .menu-content{
   padding: 20px;
-  flex: 0 0 70%;
+  flex: 0 0 78%;
+  background: white;
 }
 
 .button{
@@ -182,18 +180,17 @@ body{
 
 .dish{
   display: flex;
-  margin: 10px;
-  border-radius: 2px;
-  box-shadow: cadetblue;
+  margin: 10px 10px 30px 10px;
   gap: 20px;
   justify-content: space-between;
+  border-bottom: #6e1d1d 1px solid;
+  padding: 10px 0;
 }
 
 .dish-left{
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 
 .dish-right{
@@ -203,9 +200,26 @@ body{
   align-items: center;
   font-weight: 500;
   gap: 10px;
-
 }
 
 .dish-name{
   font-weight: 500;
+}
+
+.menu-categories{
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  justify-content: flex-start;
+  padding: 20px;
+  flex: 0 0 15%;
+  color: white;
+}
+
+.category{
+  text-align: center;
+  padding: 30px 0;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  cursor: pointer;
 }
