@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Platypi:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sedan:ital@0;1&display=swap');
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family:  "Roboto", sans-serif;
+  overflow-y: scroll;
+  font-weight: 300;
+}
+
+.navbar-container{
+  position: sticky;
+  top: 0;
+}
+
+.navbar{
+  background-color: #f6f3f3 !important;
+  opacity: 1 !important;
+  height: 6vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 15px 15px 15px;
+  align-items: center;
+  font-size: 18px;
+  box-shadow: #6e1d1d 1px 1px;
+}
+
+.navbar a{
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Baskervville", sans-serif;
+}
+
+.link:hover{
+  color: brown;
+}
+
+.link:visited{
+  color: black;
+}
+
+.link:visited:hover{
+  color: brown;
+}
+
+.navbar-left, .navbar-right{
+  flex: 0 0 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar-right{
+  flex: 0 0 60%;
+}
+
+.cart-button {
+  min-width: 100px;
+  border-radius: 20px;
+  height: 35px;
+  border: #c92424 2px solid;
+  background: none;
+  color: #c92424;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  line-height: 36px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: Baskervville, serif;
+}
+
+.count{
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.logo{
+  /*animation: rotateLogo 2s linear 1; !* Dodaj animację obracającą się logo *!*/
+  height: 50px;
+  padding: 10px;
+  width: 50px;
+  line-height: 50px;
+  position: absolute;
+  font-size: 40px;
+  cursor: pointer;
+  font-family: "DM Serif Display", sans-serif;
+}
+
+@keyframes rotateLogo {
+  from {
+    transform: rotate(0deg); /* Początkowy kąt obrotu */
+  }
+  to {
+    transform: rotate(360deg); /* Końcowy kąt obrotu */
+  }
+}
+
+.cart-button div:last-child{
+  border-radius: 50%;
+}
+
+
+.order-button {
+  margin: 5px;
+  border: none;
+  border-bottom: 3px solid red;
+  height: 45px;
+  color: white;
+  background: none;
+  cursor: pointer;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+}
+
+.order-button:hover{
+  font-size: 34px;
+  padding-bottom: 2px;
+}
+
+.landing{
+  height: calc(90vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  background-image: url("back.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.header{
+  font-size: 46px;
+  margin-bottom: 10px;
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+}
+
+.slogan{
+  font-size: 28px;
+  margin-bottom: 50px;
+  font-family: "Baskervville", sans-serif
+}
+
+.menu-container{
+  min-height: 90vh;
+  display: flex;
+  background-color: white;
+  width: 100%;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.menu-categories{
+  padding: 20px;
+  flex: 0 0 20%;
+}
+
+.menu-content{
+  padding: 20px;
+  flex: 0 0 70%;
+}
+
+.button{
+  min-width: 90px;
+  border-radius: 20px;
+  height: 30px;
+  border: none;
+  background-color: #c92424;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Baskervville, serif;
+}
+
+.dish{
+  display: flex;
+  margin: 10px;
+  border-radius: 2px;
+  box-shadow: cadetblue;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.dish-left{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.dish-right{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+  gap: 10px;
+
+}
+
+.dish-name{
+  font-weight: 500;
+}
