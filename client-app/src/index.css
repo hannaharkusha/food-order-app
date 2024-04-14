@@ -6,9 +6,25 @@ body{
   margin: 0;
   padding: 0;
   font-family:  "Roboto", sans-serif;
-  overflow-y: scroll;
+  overflow-y: visible;
   font-weight: 300;
+  overflow-x: hidden;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bdbaba;
+}
+
 
 .navbar-container{
   position: sticky;
@@ -56,27 +72,24 @@ body{
   flex: 0 0 60%;
 }
 
-.cart-button {
-  min-width: 100px;
-  border-radius: 20px;
-  height: 35px;
-  border: #c92424 2px solid;
-  background: none;
-  color: #c92424;
+.button-default{
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   line-height: 36px;
-  font-size: 18px;
-  font-weight: 400;
-  font-family: Baskervville, serif;
+  min-width: 120px;
+  height: 35px;
+  border-radius: 20px;
 }
 
-.count{
+.cart-button {
+  border: #942828 2px solid;
+  background: none;
+  font-size: 18px;
   font-family: "DM Serif Display", serif;
-  font-size: 20px;
-  font-weight: 300;
+  justify-self: flex-end;
+  color: #942828;
 }
 
 .logo{
@@ -100,15 +113,10 @@ body{
   }
 }
 
-.cart-button div:last-child{
-  border-radius: 50%;
-}
-
-
 .order-button {
   margin: 5px;
   border: none;
-  border-bottom: 3px solid red;
+  border-bottom: 3px solid red ;
   height: 45px;
   color: white;
   background: none;
@@ -167,23 +175,28 @@ body{
 }
 
 .button{
-  min-width: 90px;
+  min-width: 100px;
   border-radius: 20px;
   height: 30px;
-  border: none;
-  background-color: #c92424;
-  color: white;
+  background: none;
+  border: 1px solid #6e1d1d;
+  color: #6e1d1d;
   cursor: pointer;
-  font-size: 16px;
-  font-family: Baskervville, serif;
+  font-size: 18px;
+  font-family: "DM Serif Display", serif;
+}
+
+.button:hover{
+  background-color: #6e1d1d;
+  color: white;
 }
 
 .dish{
   display: flex;
-  margin: 10px 10px 30px 10px;
+  margin: 10px 10px 10px 10px;
   gap: 20px;
   justify-content: space-between;
-  border-bottom: #6e1d1d 1px solid;
+  border-bottom: rgba(110, 29, 29, 0.8) 1px solid;
   padding: 10px 0;
 }
 
@@ -195,7 +208,7 @@ body{
 
 .dish-right{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
   font-weight: 500;
@@ -203,7 +216,10 @@ body{
 }
 
 .dish-name{
-  font-weight: 500;
+  font-weight: 400;
+  justify-self: flex-start;
+  font-family: "DM Serif Display", sans-serif;
+  font-size: 18px;
 }
 
 .menu-categories{
@@ -211,15 +227,77 @@ body{
   flex-direction: column;
   min-height: 90vh;
   justify-content: flex-start;
-  padding: 20px;
   flex: 0 0 15%;
   color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  flex-grow: 1;
 }
 
 .category{
   text-align: center;
-  padding: 30px 0;
-  font-family: "Roboto", serif;
+  padding: 20px 20px;
+  font-family: "DM Serif Display", sans-serif;
   font-weight: 400;
   cursor: pointer;
+  font-size: 18px;
+}
+
+.category:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/*.category:active{*/
+/*  background-color: rgba(255, 255, 255, 0.2);*/
+/*}*/
+
+
+.dish-ingr{
+  font-size: 14px;
+}
+
+.gallery{
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.gallery div{
+  cursor: pointer;
+  height: 45vh;
+  flex-grow: 1;
+}
+
+.gallery div img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+
+.delivery-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
+  background-image: url("back.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.delivery-small{
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.delivery-left{
+  margin: 5px;
+  padding-top: 40px;
 }

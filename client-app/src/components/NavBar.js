@@ -7,14 +7,15 @@ function NavBar(){
         console.log('cart clicked');
     }
 
-    const handleMenuClick = () => {
+    const handleNavbarLinkClick = (to) => {
         const navbarHeight = document.querySelector('.navbar').offsetHeight;
-        const menuContainer = document.getElementById('menu');
-        if (menuContainer) {
-            const topOffset = menuContainer.offsetTop - navbarHeight;
+        const destination = document.getElementById(to);
+        if (destination) {
+            const topOffset = destination.offsetTop - navbarHeight;
             window.scrollTo({ top: topOffset, behavior: 'smooth' });
         }
     };
+
 
     return(
         <div className='navbar-container'>
@@ -23,11 +24,11 @@ function NavBar(){
                     <div className='logo'>RESTA</div>
                 </div>
                 <div className='navbar-right'>
-                    <a className='link' onClick={handleMenuClick}>Menu</a>
-                    <a className='link'>Galery</a>
+                    <a className='link' onClick={() => handleNavbarLinkClick('menu')}>Menu</a>
+                    <a className='link' onClick={() => handleNavbarLinkClick('gallery')}>Gallery</a>
                     <a className='link'>Delivery</a>
                     <a className='link'>Contact</a>
-                    <CartButton onClick={handleCartClick} count='0'/>
+                    <CartButton style='cart-button' onClick={handleCartClick} count='0'/>
                 </div>
             </div>
         </div>

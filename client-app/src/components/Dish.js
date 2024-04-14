@@ -14,8 +14,7 @@ function Dish(props){
                 <div className='dish-ingr'>{props.ingredients}</div>
             </div>
             <div className='dish-right'>
-                <div className='dish-price'>{props.price}</div>
-                <Button buttonText='Add' color='#c92424' onClick={handleAddToCartClick}></Button>
+                <Button buttonText={props.price} color='#c92424' onClick={handleAddToCartClick}></Button>
             </div>
         </div>
     )
