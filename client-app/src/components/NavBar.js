@@ -21,13 +21,13 @@ function NavBar(){
         <div className='navbar-container'>
             <div className='navbar'>
                 <div className='navbar-left'>
-                    <div className='logo'>RESTA</div>
+                    <div className='logo'>LOGO</div>
                 </div>
                 <div className='navbar-right'>
                     <a className='link' onClick={() => handleNavbarLinkClick('menu')}>Menu</a>
                     <a className='link' onClick={() => handleNavbarLinkClick('gallery')}>Gallery</a>
-                    <a className='link'>Delivery</a>
-                    <a className='link'>Contact</a>
+                    <a className='link' onClick={() => handleNavbarLinkClick('delivery')}>Delivery</a>
+                    <a className='link' onClick={() => handleNavbarLinkClick('contact')}>Contact</a>
                     <CartButton style='cart-button' onClick={handleCartClick} count='0'/>
                 </div>
             </div>
