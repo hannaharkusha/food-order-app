@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import CartButton from "./CartButton";
+import Button from "./Button";
 
-function NavBar(){
+function NavBar({ itemsInCart }) {
+
+    const [cartOpened, setCartOpened] = useState(false);
 
     const handleCartClick = () =>{
-        console.log('cart clicked');
+        setCartOpened(!cartOpened);
     }
-
     const handleNavbarLinkClick = (to) => {
         const navbarHeight = document.querySelector('.navbar').offsetHeight;
         const destination = document.getElementById(to);
@@ -16,8 +18,18 @@ function NavBar(){
         }
     };
 
+    const itemsInCartPrice = () => {
+        const totalPrice = itemsInCart.reduce((total, item) => {
+            return total + parseFloat(item.price);
+        }, 0);
+        console.log(totalPrice);
+        return totalPrice;
+    }
 
-    return(
+
+    const price = itemsInCartPrice();
+
+    return (
         <div className='navbar-container'>
             <div className='navbar'>
                 <div className='navbar-left'>
@@ -28,11 +40,31 @@ function NavBar(){
                     <a className='link' onClick={() => handleNavbarLinkClick('gallery')}>Gallery</a>
                     <a className='link' onClick={() => handleNavbarLinkClick('delivery')}>Delivery</a>
                     <a className='link' onClick={() => handleNavbarLinkClick('contact')}>Contact</a>
-                    <CartButton style='cart-button' onClick={handleCartClick} count='0'/>
+                    <CartButton  style='cart-button' onClick={handleCartClick}  count={price} />
                 </div>
             </div>
+            {cartOpened && (
+                <div className='cart-overlay'>
+                    <div className='cart'>
+                    {itemsInCart.map(item => (
+                        <div className='cart-item'  key={item.id}>
+                            <div>{item.name}</div>
+                            <div>{item.price}</div>
+                        </div>
+                    ))}
+                        <div className='cart-item total'>
+                            <div >Total:</div>
+                            <div>{price}</div>
+                        </div>
+                        <div className='buttons'>
+                            <Button className='button' buttonText='I want smth else' />
+                            <Button className='button' buttonText='Checkout' />
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
-export default NavBar
+export default NavBar;

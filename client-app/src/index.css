@@ -297,6 +297,8 @@ body{
   margin: auto;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
+  font-family: Baskervville, sans-serif, serif;
+  font-size: 18px;
 }
 
 .delivery-left{
@@ -306,10 +308,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.delivery-left input{
-  width: 40%;
+  justify-content: flex-start;
 }
 
 .delivery-right{
@@ -318,8 +317,6 @@ body{
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: Baskervville, sans-serif, serif;
-  font-size: 20px;
 }
 
 .working-hours{
@@ -349,4 +346,89 @@ body{
   border-bottom: 1px solid #8c0909;
   margin-bottom: 40px;
 }
+
+.delivery-cost{
+  width: 60%;
+  text-align: left;
+
+}
+
+.delivery-info{
+  width: 60%;
+  margin-top:40px;
+  text-align: justify;
+}
+
+.alert{
+  width: fit-content;
+  padding: 15px 80px;
+  font-size: 16px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: lightgray;
+  position: fixed;
+  bottom: 10%;
+  left: 40%;
+  z-index: 9999;
+  animation: fadeIn 1.5s ease-in-out forwards; /* Apply ease-in-out timing function for 2 seconds */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Slide up animation */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cart-overlay{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart{
+  width: 24%;
+  height: 50%;
+  overflow-y: scroll;
+  position: fixed;
+  left:38%;
+  top: 25%;
+  background-color: #f6f3f3;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.cart-item{
+  display: flex;
+  justify-content: space-between;
+  margin: 8px;
+  padding: 15px 5px;
+  box-shadow: 2px 2px 2px lightgray ;
+  border-radius: 2px;
+  color: #6e1d1d;
+  font-family: "Baskervville", sans-serif;
+}
+
+.total{
+  box-shadow: none;
+  margin-top: auto;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
 

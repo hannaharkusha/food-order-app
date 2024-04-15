@@ -18,8 +18,8 @@ app.use(cors());
 
 // Insert data into MongoDB
 // Dish.insertMany(dishesData)
-//     .then(() => console.log('Data inserted successfully'))
-//     .catch(error => console.error('Error inserting data:', error));
+//  .then(() => console.log('Data inserted successfully'))
+// .catch(error => console.error('Error inserting data:', error));
 
 
 // Define your routes here

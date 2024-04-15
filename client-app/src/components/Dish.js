@@ -3,9 +3,6 @@ import Button from "./Button";
 
 function Dish(props){
 
-    const handleAddToCartClick = () => {
-        props.addToCart(this);
-    }
 
     return (
         <div className='dish'>
@@ -14,7 +11,7 @@ function Dish(props){
                 <div className='dish-ingr'>{props.ingredients}</div>
             </div>
             <div className='dish-right'>
-                <Button buttonText={props.price} color='#c92424' onClick={handleAddToCartClick}></Button>
+                <Button buttonText={props.price} color='#c92424' onClick={props.onClick}></Button>
             </div>
         </div>
     )
