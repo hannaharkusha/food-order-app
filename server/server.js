@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { dishesData } = require('./data');
+// const { dishesData } = require('./data');
 const Dish = require("./models/dishModel");
 const cors = require('cors');
-
+const orderRouter = require('./orderRouter');
 
 
 const app = express();
@@ -15,6 +15,8 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+// Mount the orderRouter to handle order-related routes
+app.use('/api/orders', orderRouter);
 
 // Insert data into MongoDB
 // Dish.insertMany(dishesData)

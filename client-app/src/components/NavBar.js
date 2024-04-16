@@ -1,13 +1,58 @@
 import React, {useState} from "react";
 import CartButton from "./CartButton";
-import Button from "./Button";
-import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Alert from "./Alert";
 
 function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
 
     const [cartOpened, setCartOpened] = useState(false);
     const [checkoutOpened, setCheckoutOpened] = useState(false);
+    const [orderAlertOpened, setOrderAlertOpened] = useState(false);
+
+    const [orderDetails, setOrderDetails] = useState({
+        name: '',
+        address: '',
+        phone: '',
+        email: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setOrderDetails(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleConfirmClick = () => {
+        const orderData = {
+            ...orderDetails,
+            dishes: itemsInCart,
+            price: price,
+            time: Date.now()
+        };
+
+        fetch('http://localhost:5000/api/orders', { // Update the port to 5000
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData),
+        })
+            .then(response => {
+                if (response.ok) {
+                    setOrderAlertOpened(true);
+                    console.log('Order placed successfully');
+                    setTimeout(() => {
+                        setOrderAlertOpened(false);
+                    }, 3000);
+                } else {
+                    throw new Error('Failed to place order');
+                }
+            })
+            .catch(error => {
+                console.error('Error placing order:', error);
+            });
+    };
 
     const handleCartClick = () =>{
         setCartOpened(!cartOpened);
@@ -82,7 +127,7 @@ function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
                                     {item.name} {item.count > 1 && `(${item.count}x)`}
                                 </div>
                                 <div>
-                                <div>{item.price * item.count}</div>
+                                <div>{(item.price * item.count).toFixed(2)}</div>
                                 <div className='plus-minus-icons'>
                                     <div onClick={() => handleMinusClick(item)}>-</div>
                                     <div onClick={() => handlePlusClick(item)}>+</div>
@@ -116,7 +161,7 @@ function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
                                 <div>
                                     {item.name} {item.count > 1 && `(${item.count}x)`}
                                 </div>
-                                <div>{item.price * item.count}</div>
+                                <div>{(item.price * item.count).toFixed(2)}</div>
                             </div>
                         ))}
                         <div className='cart-item-order total-order'>
@@ -125,17 +170,49 @@ function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
                         </div>
                         <div className='order-form'>
                             <div className='form-label'>Order details:</div>
-                            <input type='text' placeholder='Name' required='true'/>
-                            <input type='text' placeholder='Address' required='true'/>
-                            <input type='tel' placeholder='Phone number' required='true'/>
-                            <input type='email' placeholder='E-mail' required='true'/>
+                            <input
+                                type='text'
+                                name='name'
+                                placeholder='Name'
+                                value={orderDetails.name}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <input
+                                type='text'
+                                name='address'
+                                placeholder='Address'
+                                value={orderDetails.address}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <input
+                                type='tel'
+                                name='phone'
+                                placeholder='Phone number'
+                                value={orderDetails.phone}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <input
+                                type='email'
+                                name='email'
+                                placeholder='E-mail'
+                                value={orderDetails.email}
+                                onChange={handleInputChange}
+                                required
+                            />
                         </div>
                         <div className='buttons buttons-order-form'>
-                            <button className='button-form add-more' onClick={handleCheckoutAndBackClick}>Back to cart</button>
-                            <button className='button-form'>Confirm</button>
+                            <button className='button-form add-more' onClick={handleCheckoutAndBackClick}>Back to cart
+                            </button>
+                            <button className='button-form' onClick={handleConfirmClick}>Confirm</button>
                         </div>
                     </div>
                 </div>
+            )}
+            {orderAlertOpened && (
+                <Alert message='Your order placed succesfully!'/>
             )}
         </div>
     );
