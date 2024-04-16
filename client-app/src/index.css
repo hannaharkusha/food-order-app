@@ -387,7 +387,7 @@ body{
 .cart-overlay{
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -395,10 +395,10 @@ body{
 
 .cart{
   width: 24%;
-  height: 50%;
+  min-width: 400px;
+  min-height: 50%;
   overflow-y: scroll;
   position: fixed;
-  left:38%;
   top: 25%;
   background-color: #f6f3f3;
   border-radius: 5px;
@@ -410,11 +410,11 @@ body{
 .cart-item{
   display: flex;
   justify-content: space-between;
-  margin: 8px;
+  margin: 2% 6%;
   padding: 15px 5px;
   box-shadow: 2px 2px 2px lightgray ;
   border-radius: 2px;
-  color: #6e1d1d;
+  color: black;
   font-family: "Baskervville", sans-serif;
 }
 
@@ -424,11 +424,122 @@ body{
 }
 
 .buttons{
+  margin: 4%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  margin-bottom: 10px;
+}
+
+.button-form{
+  padding: 10px 0;
+  border-radius: 3px;
+  width: 48%;
+  border: 1px solid #6e1d1d;
+  background-color: #6e1d1d;
+  color: #f6f3f3;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.button-form:hover{
+  background-color: rgba(110, 29, 29, 0.8);
+}
+
+.add-more{
+  background-color: #f6f3f3;
+  border: 1px solid #6e1d1d;
+  color: #6e1d1d;
+  font-weight: 500;
+}
+
+.add-more:hover{
+  background-color: rgba(211, 211, 211, 0.5);
+}
+
+.checkout{
+  width: 30%;
+  min-width: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-height: 80%;
+  overflow-y: scroll;
+  position: fixed;
+  top: 15%;
+  background-color: #f6f3f3;
+  border-radius: 5px;
+ }
+
+.order-form{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.order-form input{
+  width: 90%;
+  height: 30px;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 5px;
+  align-self: center;
+}
+
+.buttons-order-form{
+  width: 80%;
+  margin-top: auto;
+}
+
+.order-form-header{
+  font-size: 24px;
+  font-family: "Baskervville", sans-serif;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+}
+
+.cart-item-order{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.total-order{
+  margin-top: 5px;
+  padding-top: 3px;
+  border-top: 1px solid rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+}
+
+.plus-minus-icons:first-child{
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.plus-minus-icons{
+  margin-top:5px;
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-label{
+  margin-bottom: 5px;
 }
 
 

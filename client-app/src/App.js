@@ -33,7 +33,7 @@ function App() {
 
     return (
         <div className="App">
-            <NavBar itemsInCart={itemsInCart} />
+            <NavBar itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} updateCartItems={updateCartItems}/>
             <Landing slogan='Your culinary dream just a touch away' header ='Your Restaurant'/>
             <MenuCard updateCartItems={updateCartItems} />
             <Gallery />

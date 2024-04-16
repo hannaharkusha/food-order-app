@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import CartButton from "./CartButton";
 import Button from "./Button";
+import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-function NavBar({ itemsInCart }) {
+function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
 
     const [cartOpened, setCartOpened] = useState(false);
+    const [checkoutOpened, setCheckoutOpened] = useState(false);
 
     const handleCartClick = () =>{
         setCartOpened(!cartOpened);
@@ -18,6 +21,10 @@ function NavBar({ itemsInCart }) {
         }
     };
 
+    const handleAddMoreClick = () =>{
+        setCartOpened(!cartOpened);
+    }
+
     const itemsInCartPrice = () => {
         const totalPrice = itemsInCart.reduce((total, item) => {
             return total + parseFloat(item.price);
@@ -26,8 +33,25 @@ function NavBar({ itemsInCart }) {
         return totalPrice;
     }
 
-
     const price = itemsInCartPrice();
+
+    const handleCheckoutAndBackClick = () =>{
+        setCheckoutOpened(!checkoutOpened);
+        setCartOpened(!cartOpened);
+    }
+
+    const handlePlusClick = (item) =>{
+        updateCartItems(item);
+    }
+
+    const handleMinusClick = (item) =>{
+        const indexToRemove = itemsInCart.findIndex(cartItem => cartItem.name === item.name);
+        if (indexToRemove !== -1) {
+            const updatedCart = [...itemsInCart];
+            updatedCart.splice(indexToRemove, 1);
+            setItemsInCart(updatedCart);
+        }
+    }
 
     return (
         <div className='navbar-container'>
@@ -44,21 +68,70 @@ function NavBar({ itemsInCart }) {
                 </div>
             </div>
             {cartOpened && (
-                <div className='cart-overlay'>
+                <div className='cart-overlay' id='cart-overlay'>
                     <div className='cart'>
-                    {itemsInCart.map(item => (
-                        <div className='cart-item'  key={item.id}>
-                            <div>{item.name}</div>
-                            <div>{item.price}</div>
-                        </div>
-                    ))}
+                        {Object.values(itemsInCart.reduce((acc, item) => {
+                            if (!acc[item.name]) {
+                                acc[item.name] = { ...item, count: 0 };
+                            }
+                            acc[item.name].count++;
+                            return acc;
+                        }, {})).map(item => (
+                            <div className='cart-item' key={item.name}>
+                                <div>
+                                    {item.name} {item.count > 1 && `(${item.count}x)`}
+                                </div>
+
+                                <div>{item.price * item.count}
+                                    <div className='plus-minus-icons'>
+                                        <div onClick={()=>handleMinusClick(item)}>-</div>
+                                        <div onClick={()=>handlePlusClick(item)}/>+</div>
+                                </div>
+                            </div>
+                        ))}
                         <div className='cart-item total'>
                             <div >Total:</div>
                             <div>{price}</div>
                         </div>
                         <div className='buttons'>
-                            <Button className='button' buttonText='I want smth else' />
-                            <Button className='button' buttonText='Checkout' />
+                            <button className='button-form add-more' onClick={handleAddMoreClick}>Add products</button>
+                            <button className='button-form' onClick={handleCheckoutAndBackClick}>Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {checkoutOpened && (
+                <div className='cart-overlay' id='checkout-overlay'>
+                    <div className='checkout'>
+                        <div className='order-form-header'>Confirm order details</div>
+                        {Object.values(itemsInCart.reduce((acc, item) => {
+                            if (!acc[item.name]) {
+                                acc[item.name] = { ...item, count: 0 };
+                            }
+                            acc[item.name].count++;
+                            return acc;
+                        }, {})).map(item => (
+                            <div className='cart-item-order' key={item.name}>
+                                <div>
+                                    {item.name} {item.count > 1 && `(${item.count}x)`}
+                                </div>
+                                <div>{item.price * item.count}</div>
+                            </div>
+                        ))}
+                        <div className='cart-item-order total-order'>
+                            <div>Total:</div>
+                            <div>{price}</div>
+                        </div>
+                        <div className='order-form'>
+                            <div className='form-label'>Order details:</div>
+                            <input type='text' placeholder='Name' required='true'/>
+                            <input type='text' placeholder='Address' required='true'/>
+                            <input type='tel' placeholder='Phone number' required='true'/>
+                            <input type='email' placeholder='E-mail' required='true'/>
+                        </div>
+                        <div className='buttons buttons-order-form'>
+                            <button className='button-form add-more' onClick={handleCheckoutAndBackClick}>Back to cart</button>
+                            <button className='button-form'>Confirm</button>
                         </div>
                     </div>
                 </div>

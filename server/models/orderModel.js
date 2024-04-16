@@ -8,6 +8,8 @@ const orderSchema = new Schema({
     price: String,
     time: String,
     phoneNumber: String,
+    mail: String,
+    adres: String
 });
 
 const Order = mongoose.model('Order', orderSchema);
