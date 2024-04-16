@@ -29,8 +29,7 @@ function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
         const totalPrice = itemsInCart.reduce((total, item) => {
             return total + parseFloat(item.price);
         }, 0);
-        console.log(totalPrice);
-        return totalPrice;
+        return totalPrice.toFixed(2);
     }
 
     const price = itemsInCartPrice();
@@ -50,6 +49,7 @@ function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
             const updatedCart = [...itemsInCart];
             updatedCart.splice(indexToRemove, 1);
             setItemsInCart(updatedCart);
+            localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         }
     }
 
@@ -72,7 +72,7 @@ function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
                     <div className='cart'>
                         {Object.values(itemsInCart.reduce((acc, item) => {
                             if (!acc[item.name]) {
-                                acc[item.name] = { ...item, count: 0 };
+                                acc[item.name] = {...item, count: 0};
                             }
                             acc[item.name].count++;
                             return acc;
@@ -81,16 +81,17 @@ function NavBar({ itemsInCart , updateCartItems, setItemsInCart }) {
                                 <div>
                                     {item.name} {item.count > 1 && `(${item.count}x)`}
                                 </div>
-
-                                <div>{item.price * item.count}
-                                    <div className='plus-minus-icons'>
-                                        <div onClick={()=>handleMinusClick(item)}>-</div>
-                                        <div onClick={()=>handlePlusClick(item)}/>+</div>
+                                <div>
+                                <div>{item.price * item.count}</div>
+                                <div className='plus-minus-icons'>
+                                    <div onClick={() => handleMinusClick(item)}>-</div>
+                                    <div onClick={() => handlePlusClick(item)}>+</div>
+                                </div>
                                 </div>
                             </div>
                         ))}
                         <div className='cart-item total'>
-                            <div >Total:</div>
+                            <div>Total:</div>
                             <div>{price}</div>
                         </div>
                         <div className='buttons'>

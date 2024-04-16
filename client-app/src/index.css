@@ -543,3 +543,62 @@ body{
 }
 
 
+
+
+/* For screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  .html{
+    width: 100dvw;
+    overflow-x: hidden;
+  }
+  .body{
+    width: 100dvw;
+  }
+
+  .navbar{
+    justify-content: space-between;
+    width: 100dvw;
+  }
+
+  .landing{
+    margin: auto;
+    width: 100dvw;
+
+  }
+
+  .gallery{
+    width: 100dvw;
+    margin: auto;
+    align-items: center;
+  }
+
+  .menu{
+    width: 100dvw;
+    margin: auto;
+
+  }
+
+  .delivery-box{
+    width: 100dvw;
+    margin: auto;
+  }
+
+  .navbar-right a {
+   display: none;
+  }
+
+  .cart {
+    width: 90%;
+    min-width: unset;
+  }
+
+  .delivery-small{
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .logo{
+    width: fit-content;
+  }
+
+}
