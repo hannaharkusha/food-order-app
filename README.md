@@ -5,3 +5,6 @@
 ![Zrzut ekranu 2024-04-17 080434](https://github.com/hannaharkusha/food-order-app/assets/93228122/b7b03d59-772c-4231-a534-6190b567e619)
 ![Zrzut ekranu 2024-04-17 080446](https://github.com/hannaharkusha/food-order-app/assets/93228122/ad9c5b55-7873-4d2e-ad50-71091fcb2205)
 ![Zrzut ekranu 2024-04-17 080509](https://github.com/hannaharkusha/food-order-app/assets/93228122/108937a3-3d6e-4b9b-a337-15211aba2e8a)
+
+Mongo DB Collections
+![image](https://github.com/hannaharkusha/food-order-app/assets/93228122/72a569b5-7a62-48ef-8a0d-f4ebe95cb200)
