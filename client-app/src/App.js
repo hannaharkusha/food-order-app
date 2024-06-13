@@ -34,7 +34,7 @@ function App() {
     return (
         <div className="App">
             <NavBar itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} updateCartItems={updateCartItems}/>
-            <Landing slogan='Your culinary dream just a touch away' header ='Your Restaurant'/>
+            <Landing slogan='Your culinary dream just a touch away' header ='Restaurant'/>
             <MenuCard updateCartItems={updateCartItems} />
             <Gallery />
             <Delivery cost=' 5$' hours={workingHours} phone={number} location={location}/>
